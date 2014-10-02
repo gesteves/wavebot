@@ -16,6 +16,7 @@ end
 
 post "/" do
   response = ""
+  puts params
   # Ignore if text is a cfbot command, or a bot response, or the outgoing integration token doesn't match
   unless params[:text].nil? || !params[:text].match(/^(:wave:\s*)+$/) || params[:user_id] == "USLACKBOT" || params[:user_id] == "" || params[:token] != ENV["OUTGOING_WEBHOOK_TOKEN"]
     if rand <= ENV["RESPONSE_CHANCE"].to_f
